@@ -2,7 +2,7 @@ module.exports = {
   apps: [{
     name: 'youtube-vob-opener',
     script: 'dist/server/node-build.mjs',
-    cwd: '/var/www/yt.techassistant.co.in', // Update this to your actual VPS path
+    cwd: '/root/techassistant/YT',
     instances: 1,
     autorestart: true,
     watch: false,

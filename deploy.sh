@@ -12,7 +12,7 @@ echo "🚀 Starting deployment for YouTube VOB Opener..."
 APP_NAME="youtube-vob-opener"
 DOMAIN="yt.techassistant.co.in"
 PORT=3008
-VPS_PATH="/var/www/$DOMAIN"  # Update this path as needed
+VPS_PATH="/root/techassistant/YT"
 NGINX_CONF="/etc/nginx/sites-available/$DOMAIN"
 
 # Colors for output

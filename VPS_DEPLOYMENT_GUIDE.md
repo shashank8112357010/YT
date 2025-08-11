@@ -13,15 +13,15 @@
 #### 1. Upload files to VPS
 ```bash
 # On your VPS, create directory
-sudo mkdir -p /var/www/yt.techassistant.co.in
-cd /var/www/yt.techassistant.co.in
+sudo mkdir -p /root/techassistant/YT
+cd /root/techassistant/YT
 
 # Upload your project files here (via git, scp, or FTP)
 ```
 
 #### 2. Install dependencies and build
 ```bash
-cd /var/www/yt.techassistant.co.in
+cd /root/techassistant/YT
 npm ci --production
 npm run build
 ```
