@@ -38,7 +38,7 @@ pm2 stop $APP_NAME || true
 pm2 delete $APP_NAME || true
 
 # Start with ecosystem file
-pm2 start ecosystem.config.js --env production
+pm2 start ecosystem.config.cjs --env production
 
 # Save PM2 configuration
 pm2 save

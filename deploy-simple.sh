@@ -24,7 +24,7 @@ pm2 stop youtube-vob-opener || true
 pm2 delete youtube-vob-opener || true
 
 # Start the application
-pm2 start ecosystem.config.js --env production
+pm2 start ecosystem.config.cjs --env production
 
 # Save PM2 configuration
 pm2 save
