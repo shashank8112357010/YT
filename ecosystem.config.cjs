@@ -9,11 +9,11 @@ module.exports = {
     max_memory_restart: '1G',
     env: {
       NODE_ENV: 'production',
-      PORT: 3008
+      PORT: '3008'
     },
     env_production: {
       NODE_ENV: 'production',
-      PORT: 3008
+      PORT: '3008'
     },
     error_file: '/var/log/pm2/youtube-vob-opener-error.log',
     out_file: '/var/log/pm2/youtube-vob-opener-out.log',
