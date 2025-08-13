@@ -24,6 +24,12 @@ export default function Index() {
   const [isSecurityValidated, setIsSecurityValidated] = useState(false);
 
   // Auto-clear alerts after 5 seconds for better UX
+  // Disclaimer marquee
+  const disclaimer = (
+    <>
+      This tool is for playing/educational purposes only. It is not meant for hurting anyone. <a href="#privacy-policy" className="underline text-blue-700 hover:text-blue-900">Privacy Policy</a>
+    </>
+  );
   useEffect(() => {
     if (alert) {
       const timer = setTimeout(() => setAlert(null), 5000);
@@ -34,6 +40,17 @@ export default function Index() {
   // Secure URL input handler with real-time validation
   const handleUrlChange = useCallback((value: string) => {
     // Limit input length for security
+      <div className="relative overflow-hidden bg-yellow-100 text-yellow-800 py-2 font-semibold text-sm">
+        <div className="whitespace-nowrap animate-scroll inline-block" style={{ animation: 'scroll-left 18s linear infinite' }}>
+          {disclaimer}
+        </div>
+        <style>{`
+          @keyframes scroll-left {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+          }
+        `}</style>
+      </div>
     const truncatedValue = value.substring(0, 2048);
     setYoutubeUrl(truncatedValue);
 
@@ -84,6 +101,18 @@ export default function Index() {
     const randomBytes = new Uint8Array(20);
     crypto.getRandomValues(randomBytes);
     const deviceSessionId = Array.from(randomBytes, byte => byte.toString(16).padStart(2, '0')).join('');
+              <div className="mt-12 mb-8 px-4 max-w-2xl mx-auto">
+                <Card className="bg-white/80 dark:bg-gray-900/80 border border-gray-200 dark:border-gray-800 shadow-md">
+                  <CardHeader>
+                    <CardTitle>Privacy Policy & Responsible Use</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription>
+                      This tool is intended solely for playing and educational purposes. It is not meant for hurting, harassing, or targeting anyone. No personal data is collected or stored. Please use responsibly and respect others' privacy and rights. Any misuse is strictly against our policy.
+                    </CardDescription>
+                  </CardContent>
+                </Card>
+              </div>
 
     // VOB Geo-masking: Simulate different geographical origins
     const geoRegions = [
@@ -343,7 +372,23 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-brand-50 to-brand-100 dark:from-brand-950 dark:to-brand-900">
-      <div className="container mx-auto px-4 py-8">
+      {/* Disclaimer Banner - Always Visible at Top */}
+      <div className="fixed top-0 left-0 w-full z-50 bg-yellow-100 text-yellow-800 py-2 font-semibold text-sm overflow-hidden shadow-md">
+        <div className="whitespace-nowrap animate-scroll inline-block" style={{ animation: 'scroll-left 18s linear infinite' }}>
+          {disclaimer}
+        </div>
+        <style>{`
+          @keyframes scroll-left {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+          }
+          .animate-scroll {
+            min-width: 100vw;
+            display: inline-block;
+          }
+        `}</style>
+      </div>
+      <div className="container mx-auto px-4 py-8 pt-16">
         {/* Header */}
         <div className="text-center mb-12">
           <div className="flex justify-center mb-4">
@@ -535,6 +580,20 @@ export default function Index() {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Privacy Policy */}
+        <div id="privacy-policy" className="mt-12 mb-8 px-4 max-w-2xl mx-auto scroll-mt-24">
+          <Card className="bg-white/80 dark:bg-gray-900/80 border border-gray-200 dark:border-gray-800 shadow-md">
+            <CardHeader>
+              <CardTitle>Privacy Policy & Responsible Use</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <CardDescription>
+                This tool is intended solely for playing and educational purposes. It is not meant for hurting, harassing, or targeting anyone. No personal data is collected or stored. Please use responsibly and respect others' privacy and rights. Any misuse is strictly against our policy.
+              </CardDescription>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </div>
