@@ -46,7 +46,7 @@ export const youtubeUrlSchema = z.string()
 export const tabCountSchema = z.number()
   .int("Tab count must be an integer")
   .min(1, "Minimum 1 tab required")
-  .max(10, "Maximum 10 tabs allowed for security"); // Reduced from 20 for security
+  .max(50, "Maximum 50 tabs allowed for security"); // Increased to 50 tabs
 
 // Sanitize URL parameters to prevent injection attacks
 export function sanitizeUrlParameter(value: string): string {

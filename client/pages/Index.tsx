@@ -16,11 +16,11 @@ import {
 
 export default function Index() {
   const [youtubeUrl, setYoutubeUrl] = useState("");
-  const [tabCount, setTabCount] = useState(3);
+  const [tabCount, setTabCount] = useState(30);
   const [isLoading, setIsLoading] = useState(false);
   const [recentUrls, setRecentUrls] = useState<string[]>([]);
   const [alert, setAlert] = useState<{ type: 'success' | 'error' | 'warning'; message: string } | null>(null);
-  const [rateLimiter] = useState(() => new RateLimiter(5, 60000)); // 5 attempts per minute
+  const [rateLimiter] = useState(() => new RateLimiter(50, 60000)); // 5 attempts per minute
   const [isSecurityValidated, setIsSecurityValidated] = useState(false);
 
   // Auto-clear alerts after 5 seconds for better UX
@@ -61,7 +61,7 @@ export default function Index() {
     } else {
       setAlert({
         type: 'warning',
-        message: 'Tab count must be between 1 and 10 for security reasons'
+        message: 'Tab count must be between 1 and 50 for security reasons'
       });
     }
   }, []);
@@ -428,13 +428,13 @@ export default function Index() {
                     id="tab-count"
                     type="number"
                     min="1"
-                    max="10"
+                    max="100"
                     value={tabCount}
                     onChange={(e) => handleTabCountChange(e.target.value)}
                     className="h-12 w-24 text-base text-center"
                   />
                   <div className="flex flex-wrap gap-2">
-                    {[2, 3, 5, 8].map((count) => (
+                    {[2, 3, 5, 8, 10, 15, 20, 40, 50].map((count) => (
                       <Badge
                         key={count}
                         variant="outline"
@@ -447,7 +447,7 @@ export default function Index() {
                   </div>
                 </div>
                 <p className="text-sm text-gray-500 dark:text-gray-400">
-                  Maximum 10 tabs for security and performance (browser may block excessive tabs)
+                  Maximum 50 tabs for security and performance (browser may block excessive tabs)
                 </p>
               </div>
 
